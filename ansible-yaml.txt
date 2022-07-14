@@ -1,0 +1,48 @@
+To create a file
+
+---
+- hosts: dev
+tasks:
+- name: Create a file
+file:
+path: "/home/file-name"
+state: touch
+
+To insert a data in a file
+
+---
+- hosts: all
+tasks:
+- name: To insert a data
+copy:
+dest: "/your path"
+content: |
+line 01
+line 02
+
+Creating Multiple files: 
+
+---
+- hosts: all
+tasks:
+- name: Create multiple files
+file:
+path: "{{ item }}"
+state: touch
+with_items:
+- test01.txt
+- test02.txt
+- test03.txt
+- test04.txt
+
+Creating a folder
+
+---
+- hosts: all
+tasks:
+- name: Creating a new directory
+file:
+path: "/your path"
+state: directory
+
+
